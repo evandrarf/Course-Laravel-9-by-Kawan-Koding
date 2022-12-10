@@ -23,9 +23,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get("/students", [StudentController::class, "index"]);
-Route::get("/students/create", [StudentController::class, "create"]);
-Route::post("/students", [StudentController::class, "store"]);
+Route::get("/students", [StudentController::class, "index"])->name("students.index");
+Route::get("/students/create", [StudentController::class, "create"])->name("students.create");
+Route::post("/students", [StudentController::class, "store"])->name("students.store");
 
 
 Route::middleware('auth')->group(function () {

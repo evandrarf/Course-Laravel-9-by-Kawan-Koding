@@ -1,5 +1,13 @@
 @extends('templates.default')
 
+@php
+$title = "Siswa";
+$pretitle = "Semua Data";
+@endphp
+
+@push('page-action')
+<a href="{{route('students.create')}}" class="btn btn-primary">Tambah Data</a>
+@endpush
 
 @section('content')
 <h1>Student</h1>
