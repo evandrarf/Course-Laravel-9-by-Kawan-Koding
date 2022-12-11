@@ -27,6 +27,8 @@ class StudentController extends Controller
 
       $student->save();
 
+      session()->flash("success", "Data Berhasil Ditambahkan.");
+
       return redirect()->route('students.index');
     }
 
@@ -45,13 +47,17 @@ class StudentController extends Controller
 
       $student->save();
 
-      return redirect()->route('students.index');
+    //   session()->flash("success", "Data Berhasil Diubah.");
+
+      return redirect()->route('students.index')->with("info", "Data Berhasil Diubah.");
     }
 
     public function destroy(int $id) {
       $student = Student::find($id);
 
       $student->delete();
+
+      session()->flash("danger", "Data Berhasil Dihapus.");
 
       return redirect()->route("students.index");
     }

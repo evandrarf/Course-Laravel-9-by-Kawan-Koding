@@ -39,7 +39,7 @@
       </div>
       <div class="page-body">
         <div class="container-xl">
-          @yield('content')
+          @include('templates.patials.alerts')
         </div>
       </div>
       @include('templates.patials.footer')
