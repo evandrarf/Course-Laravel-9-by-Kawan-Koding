@@ -29,4 +29,22 @@ class StudentController extends Controller
 
       return redirect()->route('students.index');
     }
+
+    public function edit($id) {
+      $student = Student::find($id);
+      return view("students.edit", ["student" => $student]);
+    }
+
+    public function update(Request $request, $id) {
+      $student = Student::find($id);
+
+      $student->name = $request->name;
+      $student->address = $request->address;
+      $student->phone_number = $request->phone_number;
+      $student->class = $request->class;
+
+      $student->save();
+
+      return redirect()->route('students.index');
+    }
 }

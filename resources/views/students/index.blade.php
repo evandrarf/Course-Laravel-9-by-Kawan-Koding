@@ -35,7 +35,7 @@ $pretitle = "Semua Data";
             {{$student->class}}
           </td>
           <td>
-            <a href="#">Edit</a>
+            <a href="{{route('students.edit', $student->id)}}">Edit</a>
           </td>
         </tr>
         @endforeach
