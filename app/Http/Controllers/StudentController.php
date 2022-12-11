@@ -9,7 +9,7 @@ class StudentController extends Controller
 {
     public function index() {
       return view("students.index", [
-        'students' => Student::get(),
+        'students' => Student::latest()->get(),
       ]);
     }
 
@@ -19,6 +19,13 @@ class StudentController extends Controller
 
     public function store(Request $request) {
       $student = new Student();
+
+      $this->validate($request, [
+        "name" => ['required', 'min:3'],
+        'address' => ['required', 'min:5'],
+        'phone_number' => ['required', 'numeric'],
+        'class' => ['required']
+      ]);
 
       $student->name = $request->name;
       $student->address = $request->address;
