@@ -1,7 +1,5 @@
 @extends('templates.default')
 
-@extends('templates.default')
-
 @php
 $title = "Siswa";
 $pretitle = "Tambah Data";
