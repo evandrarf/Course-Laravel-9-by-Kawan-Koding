@@ -30,12 +30,12 @@ class StudentController extends Controller
       return redirect()->route('students.index');
     }
 
-    public function edit($id) {
+    public function edit(int $id) {
       $student = Student::find($id);
       return view("students.edit", ["student" => $student]);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, int $id) {
       $student = Student::find($id);
 
       $student->name = $request->name;
@@ -46,5 +46,13 @@ class StudentController extends Controller
       $student->save();
 
       return redirect()->route('students.index');
+    }
+
+    public function destroy(int $id) {
+      $student = Student::find($id);
+
+      $student->delete();
+
+      return redirect()->route("students.index");
     }
 }
