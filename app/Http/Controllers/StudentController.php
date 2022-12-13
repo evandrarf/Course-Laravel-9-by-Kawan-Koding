@@ -20,17 +20,26 @@ class StudentController extends Controller
     public function store(Request $request) {
       $student = new Student();
 
+
       $this->validate($request, [
         "name" => ['required', 'min:3'],
         'address' => ['required', 'min:5'],
         'phone_number' => ['required', 'numeric'],
-        'class' => ['required']
+        'class' => ['required'],
+        'photo' => ['image']
       ]);
+
+      $photo = null;
+
+      if($request->hasFile('photo')) {
+        $photo = $request->file('photo')->store('/photos');
+      }
 
       $student->name = $request->name;
       $student->address = $request->address;
       $student->phone_number = $request->phone_number;
       $student->class = $request->class;
+      $student->photo = $photo;
 
       $student->save();
 

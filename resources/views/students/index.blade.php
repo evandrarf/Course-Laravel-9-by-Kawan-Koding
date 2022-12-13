@@ -17,6 +17,7 @@ $pretitle = "Semua Data";
       <thead>
         <tr>
           <th>Name</th>
+          <th>Photo</th>
           <th>Address</th>
           <th>Phone</th>
           <th>Class</th>
@@ -27,6 +28,11 @@ $pretitle = "Semua Data";
         @foreach ($students as $student)
         <tr>
           <td>{{$student->name}}</td>
+          <td>
+            @if ($student->photo)
+            <img src="{{asset('storage/' . $student->photo)}}" height="150px" alt="{{$student->name}}-photo">
+            @endif
+          </td>
           <td class="text-muted">
             {{$student->address}}
           </td>

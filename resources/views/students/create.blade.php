@@ -8,7 +8,7 @@ $pretitle = "Tambah Data";
 @section('content')
 <div class="card">
   <div class="card-body">
-    <form action="{{route('students.store')}}" method="POST">
+    <form action="{{route('students.store')}}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="mb-3">
         <label class="form-label">Nama</label>
@@ -43,6 +43,15 @@ $pretitle = "Tambah Data";
         is-invalid
     @enderror" name="class" placeholder="Kelas" value="{{old('class')}}">
         @error('class')
+        <span class="invalid-feedback">{{$message}}</span>
+        @enderror
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Foto</label>
+        <input type="file" class="form-control @error('photo')
+        is-invalid
+    @enderror" name="photo" placeholder="Kelas" value="{{old('photo')}}">
+        @error('photo')
         <span class="invalid-feedback">{{$message}}</span>
         @enderror
       </div>
